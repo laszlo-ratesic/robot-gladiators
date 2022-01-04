@@ -30,13 +30,13 @@ var fight = function (enemyName) {
       // if yes (true), leave fight
       if (confirmSkip) {
         window.alert(playerName + " has chosen to skip the fight!");
-        playerMoney = playerMoney - 10;
+        playerMoney = Math.max(0, playerMoney - 10);
         console.log("playerMoney", playerMoney);
         break;
       }
     }
     // remove enemy health based on player attack
-    enemyHealth = enemyHealth - playerAttack;
+    enemyHealth = Math.max(0, enemyHealth - playerAttack);
     console.log(
       playerName +
         " attacked " +
@@ -62,7 +62,7 @@ var fight = function (enemyName) {
     }
 
     // remove player's health based on enemy attack
-    playerHealth = playerHealth - enemyAttack;
+    playerHealth = Math.max(0, playerHealth - enemyAttack);
     console.log(
       enemyName +
         " attacked " +
