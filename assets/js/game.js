@@ -97,8 +97,6 @@ var startGame = function () {
       window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
       var pickedEnemyObj = enemyInfo[i];
       pickedEnemyObj.health = randomNumber(40, 60);
-      // use debugger to pause script
-      debugger;
       fight(pickedEnemyObj);
       //if we're not at the last enemy in the array
       if (playerInfo.health > 0 && i < enemyInfo.length - 1) {
@@ -171,36 +169,45 @@ var shop = function () {
   }
 };
 
+//function to set name
+var getPlayerName = function () {
+  var name = "";
+  // Add loop here with prompt & condition
+  while (name === "" || name === null) {
+    name = prompt("What is your robot's name?");
+  }
+  console.log("Your robot's name is " + name);
+  return name;
+};
+
 var playerInfo = {
-  name: window.prompt("What is your robot's name"),
+  name: getPlayerName(),
   health: 100,
   attack: 10,
   money: 10,
-  reset: function() {
+  reset: function () {
     this.health = 100;
     this.money = 10;
     this.attack = 10;
   },
-  refillHealth: function() {
+  refillHealth: function () {
     if (this.money >= 7) {
       window.alert("Refilling player's health by 20 for 7 dollars.");
       this.health += 20;
       this.money -= 7;
-    }
-    else {
+    } else {
       window.alert("You don't have enough money");
     }
   },
-  upgradeAttack: function() {
+  upgradeAttack: function () {
     if (this.money >= 7) {
       window.alert("Upgrading player's attack by 6 for 7 dollars.");
       this.attack += 6;
       this.money -= 7;
-    }
-    else {
+    } else {
       window.alert("You don't have enough money!");
     }
-  }
+  },
 };
 
 var enemyInfo = [
